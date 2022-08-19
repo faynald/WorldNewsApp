@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_home">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <HorizontalScrollView
+        android:id="@+id/chip"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedChip="@+id/chip_all"
+            app:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_all"
+                android:checkable="true"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:text="All" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_business"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_money"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_entertainment"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_person"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entertainment" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_technology"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_monitor"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Technology" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_health"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_medicine"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_science"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_science"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Science" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_sports"
+                android:checkable="true"
+                app:chipIcon="@drawable/ic_sport"
+                app:iconStartPadding="4dp"
+                app:chipBackgroundColor="@animator/bg_chip_state_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Sports" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tv_latest_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latest news"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/chip"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_latest_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_latest_news"
+        app:layout_constraintTop_toBottomOf="@id/tv_latest_news"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_trending_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rv_latest_news"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Trending in your country" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_country_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_trending_country"
+        app:layout_constraintTop_toBottomOf="@id/tv_trending_country"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
