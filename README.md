@@ -1,3 +1,6 @@
+This repository is created for final project at Rakamin Academy
+
+
 Things i use :
 
 Library
